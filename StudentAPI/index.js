@@ -24,7 +24,7 @@ app.get('/students',async(req,res)=>{
     }
 })
 
-app.get('/gettotalstd',async(req.res)=>{
+app.get('/gettotalstd',async(req,res)=>{
     try {
         const result = await pool.query('select count(ID) from student');
         res.json(result.rows);
