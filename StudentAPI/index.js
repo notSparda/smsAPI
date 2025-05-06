@@ -209,6 +209,18 @@ app.get("/departments_below_avg_commission", async (req, res) => {
         res.status(500).json({ Error: err.message });
     }
 });
+
+app.get("/jobs", async (req, res) => {
+    try {
+        const result = await pool.query(
+            "select * from jobs;");
+        if (!result) return res.status(401).json({ msg: "incorrect query" });
+        return res.status(200).json({ data: result.rows });
+    } catch (err) {
+        res.status(500).json({ Error: err.message });
+    }
+});
+
 app.get("/high_salary_employees", async (req, res) => {
     try {
         const result = await pool.query(
